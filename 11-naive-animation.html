@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Naive animation</title>
+    <style>
+        .box {
+            position: absolute;
+            left: 10px;
+            top: 50px;
+            background: black;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="go">Go!</button>
+
+<div class="box"></div>
+
+</body>
+<script type="text/javascript">
+    window.onload = () => {
+        const button = document.getElementById('go');
+        const box = document.getElementsByClassName('box')[0];
+
+        button.addEventListener('click', () => {
+            const start = Date.now();
+
+            do {
+                const now = Date.now();
+
+                if (now - start > 3 * 1000) break;
+
+                box.style.cssText = `left: ${10 + ((now - start) / 100 || 0) * 30}px`;
+            } while (true);
+        });
+    };
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Let it snow</title>
+    <style>
+        html {
+            overflow: hidden;
+        }
+
+        body {
+            background: deepskyblue url("./assets/snowman.png") no-repeat;
+            background-size: 100%;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            font-size: 25px;
+            color: deepskyblue;
+            position: absolute;
+            top: 0;
+        }
+
+        h2 {
+            font-family: Arial, serif;
+            font-size: 20px;
+            color: yellow;
+        }
+    </style>
+    <script src="/js/0-base.js"></script>
+    <script src="/js/3-smarter-animation.js"></script>
+
+</head>
+<body>
+<h2>Count of snowflakes: <span id="counter"></span></h2>
+</body>
+<script type="text/javascript">
+    window.onload = () => {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const count = urlSearchParams.get('count');
+
+        window.letItSnow(count);
+    };
+</script>
+</html>

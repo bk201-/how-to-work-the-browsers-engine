@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart animation</title>
+    <style>
+        .box {
+            position: absolute;
+            left: 10px;
+            top: 50px;
+            background: black;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="go">Go!</button>
+<button id="kill">Kill!</button>
+
+<div class="box"></div>
+
+</body>
+<script type="text/javascript">
+    window.onload = () => {
+        const button = document.getElementById('go');
+        const kill = document.getElementById('kill');
+        const box = document.getElementsByClassName('box')[0];
+
+        button.addEventListener('click', () => {
+            const start = Date.now();
+
+            requestAnimationFrame(function animation() {
+                const now = Date.now();
+
+                box.style.cssText = `left: ${10 + ((now - start) / 100 || 0) * 30}px`;
+
+                if (now - start < 3 * 1000) requestAnimationFrame(animation);
+            });
+        });
+
+        kill.addEventListener('click', () => {
+            const start = Date.now();
+            while (Date.now() - start < 2000) {
+            }
+        })
+    };
+</script>
+</html>

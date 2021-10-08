@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reflow, Restyle, Repaint</title>
+    <style>
+        .box {
+            position: absolute;
+            left: 10px;
+            top: 50px;
+            background: black;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="go">Go!</button>
+
+<div class="box"></div>
+
+</body>
+<script type="text/javascript">
+    window.onload = () => {
+        const button = document.getElementById('go');
+        const box = document.getElementsByClassName('box')[0];
+
+        button.addEventListener('click', () => {
+            box.getBoundingClientRect().width > 100 ? box.style.width = '100px' : box.style.width = '200px';
+
+            box.getBoundingClientRect().height > 100 ? box.style.height = '100px' : box.style.height = '200px';
+        });
+    };
+</script>
+</html>
