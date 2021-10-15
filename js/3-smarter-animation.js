@@ -46,6 +46,7 @@ function animate() {
       })
       .forEach((item) => {
         if (item.mustDrop) {
+          item.div.y = 0;
           item.div.style.top = '0px';
           item.div.style.left = Math.random() * winWidth + 'px';
 

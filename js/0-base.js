@@ -10,6 +10,7 @@ function generateSnowflake() {
 
   // Start from the sky
   div.x = 0;
+  div.y = 0;
   return div;
 }
 

@@ -9,6 +9,7 @@ function updateCounter() {
 
 function animate() {
   const winHeights = window.innerHeight;
+
   const col = document.querySelectorAll('.snowflake');
   const snowflakes = [].slice.call(col).map((div) => {
     return {
@@ -23,7 +24,7 @@ function animate() {
 
     snowflakes
       .map((item) => {
-        const { top, bottom } = item.div.getBoundingClientRect();
+        const { bottom } = item.div.getBoundingClientRect();
 
         if (bottom > winHeights) {
           if (!item.steady) {
@@ -38,20 +39,20 @@ function animate() {
 
         item.rect = {
           left: Math.sin((item.div.x += item.div.stepX)) * 10,
-          top: top + item.div.stepY,
+          top: (item.div.y += item.div.stepY),
         };
 
         return item;
       })
       .forEach((item) => {
         if (item.mustDrop) {
+          item.div.y = 0;
           item.div.style.top = '0px';
           item.div.style.transform = '';
 
           item.steady = false;
           item.mustDrop = false;
         } else if (!item.steady) {
-          item.div.style.top = '0px';
           item.div.style.transform = 'translate3d(' + item.rect.left + 'px,' + item.rect.top + 'px, 0)';
         }
       });
